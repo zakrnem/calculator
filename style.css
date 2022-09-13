@@ -1,5 +1,5 @@
 body {
-    background-color: #2d7b9d;
+    background-color: #37718c;
 }
 
 header {
@@ -26,6 +26,7 @@ header {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    flex-direction: column;
 }
 
 .button {
@@ -44,8 +45,6 @@ header {
     aspect-ratio: 2/1;
 }
 
-
-.functions2 {
+.row4 {
     display: flex;
-    flex-direction: column;
 }
