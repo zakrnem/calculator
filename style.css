@@ -24,25 +24,25 @@ header {
 .buttons {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 15px;
     flex-direction: column;
 }
 
 .button {
     font-size: 28px;
-    width: 72.8px;
+    width: 64px;
     aspect-ratio: 1/1;
     margin-bottom: 5px;
 }
 
 .button.btype2 {
-    width: 72.8px;
-    height: 149.6px;
+    width: 64px;
+    height: 132px;
 }
 
 .button.btype3 {
-    width: 149.6px;
-    height: 72.8px;
+    width: 132px;
+    height: 64px;
 }
 
 .row4 {
