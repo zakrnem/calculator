@@ -13,7 +13,20 @@ let buttons = document.querySelector('.buttons');
     buttons.addEventListener('mousedown', (e) => {
         e.preventDefault;
         userInput = e.target.textContent;
-        result.textContent += userInput;
+        
+        if (userInput !== 'c' && userInput !== '⌫' && userInput !== '=') {
+            result.textContent += userInput;
+        }
+        else if (userInput === 'c') {
+            result.textContent = '';
+        }
+        else if (userInput === '⌫') {
+            let screenResult = result.textContent;
+            newInput = screenResult.substring(0, screenResult.length-1);
+            result.textContent = newInput;
+            
+        }
+       
     })
 
 
