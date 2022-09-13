@@ -9,7 +9,7 @@ header {
 }
 
 .container {
-    width: 400px;
+    width: max-content;
     border: solid 1px red;
     margin: auto;
     padding: 5px;
@@ -19,32 +19,37 @@ header {
     background-color: #a7d2e4;
     height: 5em;
     width:auto;
-    margin: 5px;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
+    align-items: center;
     margin-top: 20px;
     flex-direction: column;
 }
 
 .button {
     font-size: 28px;
-    width: 2.6em;
+    width: 72.8px;
     aspect-ratio: 1/1;
+    margin-bottom: 5px;
 }
 
 .button.btype2 {
-    width: 2.6em;
-    aspect-ratio: 1/2;
+    width: 72.8px;
+    height: 149.6px;
 }
 
 .button.btype3 {
-    width: 5.2em;
-    aspect-ratio: 2/1;
+    width: 149.6px;
+    height: 72.8px;
 }
 
 .row4 {
     display: flex;
 }
+
+.leftR4 {
+    margin-right: 4px;
+}
+
