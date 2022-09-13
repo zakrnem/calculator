@@ -17,8 +17,21 @@ header {
 
 .screen {
     background-color: #a7d2e4;
-    height: 5em;
     width:auto;
+    padding: 15px;
+    text-align: right;
+}
+
+.operations {
+    color: #545657;
+    font-size: 18px;
+}
+
+.result {
+    color: #121313;
+    font-size: 36px;
+    font-weight: 500;
+    height: 36px;
 }
 
 .buttons {
