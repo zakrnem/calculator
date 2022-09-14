@@ -33,8 +33,34 @@ buttons.addEventListener('mousedown', (e) => {
         result.textContent = newInput;
         inputArray = inputArray.slice(0, inputArray.length-1)
     }
-    console.log(inputArray);
 })
+
+function calculate(inputArray) {
+    let firstDigit = parseInt(inputArray[0]);
+    let calcSymbol = inputArray[1];
+    let secondDigit = parseInt(inputArray[2]);
+    let calculation;
+
+    switch(true) {
+        case(calcSymbol === '+'):
+            calculation = firstDigit + secondDigit;
+            break;
+        case(calcSymbol === '-'):
+        calculation = firstDigit - secondDigit;
+            break;
+        case(calcSymbol === 'x'):
+            calculation = firstDigit * secondDigit;
+            break;
+        case(calcSymbol === '÷'):
+            calculation = firstDigit / secondDigit;
+            break;
+    }
+    console.log(calculation);
+}
+
+let equals = buttons.querySelector('#equals');
+    equals.addEventListener('mousedown', () => calculate(inputArray))
+
 
 // we need a function that listens to first the first input and saves it as an integer
 //      (it would have to reject operation symbols)
