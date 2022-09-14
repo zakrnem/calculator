@@ -25,6 +25,7 @@ header {
 .operations {
     color: #545657;
     font-size: 18px;
+    height: 18px;
 }
 
 .result {
