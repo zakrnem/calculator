@@ -9,23 +9,31 @@ operations.className = 'operations';
 screen.appendChild(operations);
 screen.appendChild(result);
 
+let clickCount = 0;
+let inputArray = [];
+
 let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
     e.preventDefault;
     userInput = e.target.textContent;
-
+    clickCount += 1;
+    
     if (userInput !== 'c' && userInput !== '⌫' && userInput !== '=') {
         result.textContent += userInput;
+        inputArray[clickCount-1] = userInput;
     }
     else if (userInput === 'c') {
         result.textContent = '';
+        inputArray = [];
+        clickCount = 0;
     }
     else if (userInput === '⌫') {
         let screenResult = result.textContent;
         newInput = screenResult.substring(0, screenResult.length - 1);
         result.textContent = newInput;
+        inputArray = inputArray.slice(0, inputArray.length-1)
     }
-
+    console.log(inputArray);
 })
 
 // we need a function that listens to first the first input and saves it as an integer
