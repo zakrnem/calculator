@@ -27,6 +27,7 @@ buttons.addEventListener('mousedown', (e) => {
     || userInput === '.')) {
         firstOperand += userInput;
         result.textContent += userInput;
+        console.log(userInput)
     }
 
     if (firstOperand !== '-' && firstOperand !== '' && operationSymbol === ''
@@ -36,10 +37,11 @@ buttons.addEventListener('mousedown', (e) => {
         result.textContent += userInput;
     }
 
-    if (operationSymbol !== '' && firstOperand !== '' && !isNaN(parseInt(userInput)) 
-    || userInput === '.') {
+    if (operationSymbol !== '' && firstOperand !== '' && firstOperand !== '.'
+    && (!isNaN(parseInt(userInput)) || userInput === '.')) {
         secondOperand += userInput;
         result.textContent += userInput;
+        console.log(userInput)
     }
 
     if (userInput === 'c' ) {
@@ -72,8 +74,8 @@ buttons.addEventListener('mousedown', (e) => {
 let calculation;
 
 function calculate() {
-    firstOperand = parseInt(firstOperand);
-    secondOperand = parseInt(secondOperand);
+    firstOperand = parseFloat(firstOperand);
+    secondOperand = parseFloat(secondOperand);
     console.log(firstOperand + ' ' + operationSymbol + ' ' + secondOperand)
     
     switch(true) {
