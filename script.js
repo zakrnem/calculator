@@ -11,6 +11,9 @@ screen.appendChild(result);
 let clickCount = 0;
 let inputArray = [];
 let screenResult;
+let firstOperand = '';
+let secondOperand = '';
+let operationSymbol = '';
 
 let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
@@ -18,49 +21,63 @@ buttons.addEventListener('mousedown', (e) => {
     userInput = e.target.textContent;
     clickCount += 1;
     
-    if (userInput !== 'c' && userInput !== '⌫' && userInput !== '=') {
-        result.textContent += userInput;
-        inputArray[clickCount-1] = userInput;
+    if (operationSymbol === '' && !isNaN(parseInt(userInput)) 
+    || userInput === '.' || userInput === '-') {
+        firstOperand += userInput;
+        console.log('Fist operand: ' + firstOperand);
     }
-    else if (userInput === 'c') {
+
+    else if (operationSymbol === '' && (userInput === '+' || userInput === '-' 
+    || userInput === 'x' || userInput === '÷')) {
+        operationSymbol += userInput;
+        console.log('Operation symbol: ' + operationSymbol);
+    }
+
+    else if (operationSymbol !== ''&& !isNaN(parseInt(userInput)) 
+    || userInput === '.' || userInput === '-') {
+        secondOperand += userInput;
+        console.log('Second operand: ' + secondOperand);
+    }
+
+    else if (userInput === 'c' ) {
         result.textContent = '';
-        inputArray = [];
-        clickCount = 0;
+        // inputArray = [];
+        // clickCount = 0;
+        // hace falta activar estas funciones nuevamente
     }
     else if (userInput === '⌫') {
         screenResult = result.textContent;
         newInput = screenResult.substring(0, screenResult.length - 1);
         result.textContent = newInput;
-        inputArray = inputArray.slice(0, inputArray.length-1)
+        // inputArray = inputArray.slice(0, inputArray.length-1)
     }
-
+    /* 
     if (clickCount === 4) {
         inputArray = [];
         inputArray[0] = calculation;
         clickCount = 1;
     }
-    console.log(inputArray)
+    // console.log(inputArray) */
 })
 
 let calculation;
 
 function calculate(inputArray) {
-    let firstDigit = parseInt(inputArray[0]);
-    let calcSymbol = inputArray[1];
-    let secondDigit = parseInt(inputArray[2]);
-        
+    firstOperand = parseInt(firstOperand);
+    secondOperand = parseInt(secondOperand);
+    
     switch(true) {
-        case(calcSymbol === '+'):
-            calculation = firstDigit + secondDigit;
+        case(operationSymbol === '+'):
+            calculation = firstOperand + secondOperand;
             break;
-        case(calcSymbol === '-'):
-            calculation = firstDigit - secondDigit;
+        case(operationSymbol === '-'):
+            calculation = firstOperand - secondOperand;
             break;
-        case(calcSymbol === 'x'):
-            calculation = firstDigit * secondDigit;
+        case(operationSymbol === 'x'):
+            calculation = firstOperand * secondOperand;
             break;
-        case(calcSymbol === '÷'):
-            calculation = firstDigit / secondDigit;
+        case(operationSymbol === '÷'):
+            calculation = firstOperand / secondOperand;
             break;
     }
     screenResult = result.textContent;
