@@ -17,29 +17,29 @@ let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
     e.preventDefault;
     userInput = e.target.textContent;
-    
-    if (userInput !== 'c' && userInput !== '⌫' && userInput !== '=') {
-        result.textContent += userInput;
-    }
 
     if (firstOperand === '' && userInput === '-') {
         firstOperand += userInput;
+        result.textContent += userInput;
     }
 
     if (operationSymbol === '' && (!isNaN(parseInt(userInput)) 
     || userInput === '.')) {
         firstOperand += userInput;
-        console.log(firstOperand)
+        result.textContent += userInput;
     }
 
-    if (firstOperand !== '-' && operationSymbol === '' && (userInput === '-' || userInput === '+' 
+    if (firstOperand !== '-' && firstOperand !== '' && operationSymbol === ''
+    && (userInput === '-' || userInput === '+'
     || userInput === 'x' || userInput === '÷')) {
         operationSymbol = userInput;
+        result.textContent += userInput;
     }
 
-    if (operationSymbol !== '' && !isNaN(parseInt(userInput)) 
+    if (operationSymbol !== '' && firstOperand !== '' && !isNaN(parseInt(userInput)) 
     || userInput === '.') {
         secondOperand += userInput;
+        result.textContent += userInput;
     }
 
     if (userInput === 'c' ) {
