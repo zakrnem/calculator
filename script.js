@@ -113,8 +113,34 @@ function calculate() {
 let equals = buttons.querySelector('#equals');
     equals.addEventListener('mousedown', () => calculate())
 
+let sum = buttons.querySelector('#summation');
+    sum.addEventListener('mousedown', () => {
+        if (firstOperand !== '' && operationSymbol !== '' && secondOperand !== '') {
+            calculate();
+        }
+    })
+
+let sub = buttons.querySelector('#subtraction');
+    sub.addEventListener('mousedown', () => {
+        if (firstOperand !== '' && operationSymbol !== '' && secondOperand !== '') {
+            calculate();
+        }
+    })
+
+let mult = buttons.querySelector('#multiply');
+    mult.addEventListener('mousedown', () => {
+        if (firstOperand !== '' && operationSymbol !== '' && secondOperand !== '') {
+            calculate();
+        }
+    })
+
+let dvs = buttons.querySelector('#divide');
+    dvs.addEventListener('mousedown', () => {
+        if (firstOperand !== '' && operationSymbol !== '' && secondOperand !== '') {
+            calculate();
+        }
+    })
+
 /*
-- Accept only one '.' or operation symbol at a time.
 - Multiple continuos operations support.
-- Reduce the number of decimals of a division.
 */
