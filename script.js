@@ -92,6 +92,7 @@ function calculate() {
             calculation = firstOperand / secondOperand;
             break;
     }
+    calculation = +parseFloat(calculation.toFixed(10));
     screenResult = result.textContent;
     operations.textContent = screenResult;
     result.textContent = calculation;
@@ -104,17 +105,7 @@ let equals = buttons.querySelector('#equals');
     equals.addEventListener('mousedown', () => calculate())
 
 /*
-We need to add some rules for the input:
-- Multiple digit number support.
-    When the user enters several numbers they're saved to the 'first operand' variable.
-    When a symbol key the first operand will be closed.
-    The symbol will be stored and the second operand will start to be stored in the 'second operand' variable.
-
-
+- Accept only one '.' or operation symbol at a time.
 - Multiple continuos operations support.
 - Reduce the number of decimals of a division.
-- First digit symbol support:
-The only symbol that will be accepted as the first digit is "-".
-    Otherwise the input won't be accepted
-- Decimal numbers support: very similar to the latter.
 */
