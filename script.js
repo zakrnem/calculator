@@ -8,8 +8,6 @@ operations.className = 'operations';
 screen.appendChild(operations);
 screen.appendChild(result);
 
-let clickCount = 0;
-let inputArray = [];
 let screenResult;
 let firstOperand = '';
 let secondOperand = '';
@@ -19,58 +17,66 @@ let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
     e.preventDefault;
     userInput = e.target.textContent;
-    clickCount += 1;
-    
-    if (operationSymbol === '' && !isNaN(parseInt(userInput)) 
-    || userInput === '.' || userInput === '-') {
-        firstOperand += userInput;
-        console.log('Fist operand: ' + firstOperand);
+        
+    if (userInput !== 'c' && userInput !== '⌫' && userInput !== '=') {
+        result.textContent += userInput;
     }
 
-    else if (operationSymbol === '' && (userInput === '+' || userInput === '-' 
+    if (operationSymbol === '' && !isNaN(parseInt(userInput)) 
+    || userInput === '.' || userInput === '#') {
+        firstOperand += userInput;
+    }
+
+    else if (operationSymbol === '' && (userInput === '#' || userInput === '+' 
     || userInput === 'x' || userInput === '÷')) {
-        operationSymbol += userInput;
-        console.log('Operation symbol: ' + operationSymbol);
+        operationSymbol = userInput;
+        console.log(operationSymbol);
     }
 
     else if (operationSymbol !== ''&& !isNaN(parseInt(userInput)) 
     || userInput === '.' || userInput === '-') {
         secondOperand += userInput;
-        console.log('Second operand: ' + secondOperand);
     }
 
     else if (userInput === 'c' ) {
         result.textContent = '';
-        // inputArray = [];
-        // clickCount = 0;
-        // hace falta activar estas funciones nuevamente
+        operations.textContent = '';
+        firstOperand = '';
+        secondOperand = '';
+        operationSymbol = '';
     }
+
     else if (userInput === '⌫') {
         screenResult = result.textContent;
         newInput = screenResult.substring(0, screenResult.length - 1);
         result.textContent = newInput;
-        // inputArray = inputArray.slice(0, inputArray.length-1)
+        
+        if(operationSymbol === '') {
+            firstOperand = firstOperand.substring(0, firstOperand.length - 1);
+        }
+
+        if(operationSymbol !== '' && secondOperand === '') {
+            operationSymbol = '';
+        }
+
+        if(secondOperand !== '') {
+            secondOperand = secondOperand.substring(0, secondOperand.length - 1);
+        }
     }
-    /* 
-    if (clickCount === 4) {
-        inputArray = [];
-        inputArray[0] = calculation;
-        clickCount = 1;
-    }
-    // console.log(inputArray) */
 })
 
 let calculation;
 
-function calculate(inputArray) {
+function calculate() {
     firstOperand = parseInt(firstOperand);
     secondOperand = parseInt(secondOperand);
+    console.log(firstOperand + ' ' + operationSymbol + ' ' + secondOperand)
     
     switch(true) {
         case(operationSymbol === '+'):
             calculation = firstOperand + secondOperand;
             break;
-        case(operationSymbol === '-'):
+        case(operationSymbol === '#'):
             calculation = firstOperand - secondOperand;
             break;
         case(operationSymbol === 'x'):
@@ -83,10 +89,13 @@ function calculate(inputArray) {
     screenResult = result.textContent;
     operations.textContent = screenResult;
     result.textContent = calculation;
+    firstOperand = calculation;
+    secondOperand = '';
+    operationSymbol = '';
 }
 
 let equals = buttons.querySelector('#equals');
-    equals.addEventListener('mousedown', () => calculate(inputArray))
+    equals.addEventListener('mousedown', () => calculate())
 
 /*
 We need to add some rules for the input:
