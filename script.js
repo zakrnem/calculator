@@ -17,28 +17,32 @@ let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
     e.preventDefault;
     userInput = e.target.textContent;
-        
+    
     if (userInput !== 'c' && userInput !== '⌫' && userInput !== '=') {
         result.textContent += userInput;
     }
 
-    if (operationSymbol === '' && !isNaN(parseInt(userInput)) 
-    || userInput === '.' || userInput === '#') {
+    if (firstOperand === '' && userInput === '-') {
         firstOperand += userInput;
     }
 
-    else if (operationSymbol === '' && (userInput === '#' || userInput === '+' 
-    || userInput === 'x' || userInput === '÷')) {
-        operationSymbol = userInput;
-        console.log(operationSymbol);
+    if (operationSymbol === '' && (!isNaN(parseInt(userInput)) 
+    || userInput === '.')) {
+        firstOperand += userInput;
+        console.log(firstOperand)
     }
 
-    else if (operationSymbol !== ''&& !isNaN(parseInt(userInput)) 
-    || userInput === '.' || userInput === '-') {
+    if (firstOperand !== '-' && operationSymbol === '' && (userInput === '-' || userInput === '+' 
+    || userInput === 'x' || userInput === '÷')) {
+        operationSymbol = userInput;
+    }
+
+    if (operationSymbol !== '' && !isNaN(parseInt(userInput)) 
+    || userInput === '.') {
         secondOperand += userInput;
     }
 
-    else if (userInput === 'c' ) {
+    if (userInput === 'c' ) {
         result.textContent = '';
         operations.textContent = '';
         firstOperand = '';
@@ -46,7 +50,7 @@ buttons.addEventListener('mousedown', (e) => {
         operationSymbol = '';
     }
 
-    else if (userInput === '⌫') {
+    if (userInput === '⌫') {
         screenResult = result.textContent;
         newInput = screenResult.substring(0, screenResult.length - 1);
         result.textContent = newInput;
@@ -76,7 +80,7 @@ function calculate() {
         case(operationSymbol === '+'):
             calculation = firstOperand + secondOperand;
             break;
-        case(operationSymbol === '#'):
+        case(operationSymbol === '-'):
             calculation = firstOperand - secondOperand;
             break;
         case(operationSymbol === 'x'):
