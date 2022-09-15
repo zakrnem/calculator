@@ -23,11 +23,15 @@ buttons.addEventListener('mousedown', (e) => {
         result.textContent += userInput;
     }
 
-    if (operationSymbol === '' && (!isNaN(parseInt(userInput)) 
-    || userInput === '.')) {
+    if (operationSymbol === '' && !isNaN(parseInt(userInput)) ) {
         firstOperand += userInput;
         result.textContent += userInput;
-        console.log(userInput)
+    }
+
+    if (userInput === '.' && !result.textContent.includes('.')
+    && operationSymbol === '') {
+        firstOperand += userInput;
+        result.textContent += userInput;
     }
 
     if (firstOperand !== '-' && firstOperand !== '' && operationSymbol === ''
@@ -38,10 +42,15 @@ buttons.addEventListener('mousedown', (e) => {
     }
 
     if (operationSymbol !== '' && firstOperand !== '' && firstOperand !== '.'
-    && (!isNaN(parseInt(userInput)) || userInput === '.')) {
+    && !isNaN(parseInt(userInput)) ) {
         secondOperand += userInput;
         result.textContent += userInput;
-        console.log(userInput)
+    }
+
+    if (userInput === '.' && !secondOperand.includes('.')
+    && operationSymbol !== '' && firstOperand !== '' && firstOperand !== '.') {
+        secondOperand += userInput;
+        result.textContent += userInput;
     }
 
     if (userInput === 'c' ) {
