@@ -144,7 +144,16 @@ let dvs = buttons.querySelector('#divide');
         }
     })
 
+document.addEventListener('keydown', (e) => {
+    keyboardInput = e.code.replace( /^\D+/g, '')
+    console.log(keyboardInput);
+
+})
 /*
 BUGS:
-- Add keyboard support.
+- Add keyboard support:
+    + It would be better to separate the current rules function from the buttons event listener.
+    + Creating a new function with the user input as a parameter.
+    + This way that function could be called from the mousedown event listener and also from a
+    keyboard listener.
 */
