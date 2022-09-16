@@ -16,7 +16,11 @@ let operationSymbol = '';
 let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
     e.preventDefault;
-    userInput = e.target.textContent;
+    evaluateInput = String(e.target);
+    if (!evaluateInput.includes('Div')) {
+        userInput = e.target.textContent;
+    }
+    
 
     if (firstOperand === '' && userInput === '-') {
         firstOperand += userInput;
@@ -85,7 +89,6 @@ let calculation;
 function calculate() {
     firstOperand = parseFloat(firstOperand);
     secondOperand = parseFloat(secondOperand);
-    console.log(firstOperand + ' ' + operationSymbol + ' ' + secondOperand)
     
     switch(true) {
         case(operationSymbol === '+'):
@@ -101,7 +104,7 @@ function calculate() {
             calculation = firstOperand / secondOperand;
             break;
     }
-    calculation = +parseFloat(calculation.toFixed(10));
+    calculation = +parseFloat(calculation.toFixed(7));
     screenResult = result.textContent;
     operations.textContent = screenResult;
     result.textContent = calculation;
@@ -142,5 +145,6 @@ let dvs = buttons.querySelector('#divide');
     })
 
 /*
-- Multiple continuos operations support.
+BUGS:
+- Add keyboard support.
 */
