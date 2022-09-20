@@ -147,30 +147,31 @@ let dvs = buttons.querySelector('#divide');
 let keyNumberInput;
 document.addEventListener('keydown', (e) => {
     keyNumberInput = parseInt(e.code.replace( /^\D+/g, ''));
-    if (!isNaN(keyNumberInput) && !e.code.includes('F')) {
-        console.log(keyNumberInput);
-        // input numbers to calculator rules function
-    }
-    else if (e.code === 'NumpadAdd') {
-        console.log('Summation');
-    }
-    else if (e.code === 'NumpadSubtract') {
-        console.log('Subtraction');
-    }
-    else if (e.code === 'NumpadMultiply') {
-        console.log('Multiplication');
-    }
-    else if (e.code === 'NumpadDivide') {
-        console.log('Division');
-    }
-    else if (e.code === 'NumpadDecimal') {
-        console.log('Decimal');
-    }
-    else if (e.code === 'NumpadEnter' || e.code === 'Enter') {
-        console.log('Equals');
-    }
-    else if (e.code === 'Backspace') {
-        console.log('Backspace');
+    switch(true) {
+        case(!isNaN(keyNumberInput) && !e.code.includes('F')):
+            console.log(keyNumberInput);
+            break;
+        case(e.code === 'NumpadAdd'):
+            console.log('Summation');
+            break;
+        case(e.code === 'NumpadSubtract'):
+            console.log('Subtraction');
+            break;
+        case(e.code === 'NumpadMultiply'):
+            console.log('Multiplication');
+            break;
+        case(e.code === 'NumpadDivide'):
+            console.log('Division');
+            break;
+        case(e.code === 'NumpadDecimal'):
+            console.log('Decimal');
+            break;
+        case(e.code === 'NumpadEnter' || e.code === 'Enter'):
+            console.log('Equals');
+            break;
+        case(e.code === 'Backspace'):
+            console.log('Backspace');
+            break;
     }
 })
 /*
