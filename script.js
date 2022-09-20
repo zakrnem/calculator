@@ -17,11 +17,44 @@ let buttons = document.querySelector('.buttons');
 buttons.addEventListener('mousedown', (e) => {
     e.preventDefault;
     evaluateInput = String(e.target);
-    if (!evaluateInput.includes('Div')) {
-        userInput = e.target.textContent;
-    }
-    
+        if (!evaluateInput.includes('Div')) {
+            userInput = e.target.textContent;
+        }
+    rules(userInput);
+})
 
+let keyNumberInput;
+document.addEventListener('keydown', (e) => {
+    keyNumberInput = parseInt(e.code.replace( /^\D+/g, ''));
+    switch(true) {
+        case(!isNaN(keyNumberInput) && !e.code.includes('F')):
+            rules(keyNumberInput);
+            break;
+        case(e.code === 'NumpadAdd'):
+            rules('+');
+            break;
+        case(e.code === 'NumpadSubtract'):
+            rules('-');
+            break;
+        case(e.code === 'NumpadMultiply'):
+            rules('x');
+            break;
+        case(e.code === 'NumpadDivide'):
+            rules('÷');
+            break;
+        case(e.code === 'NumpadDecimal'):
+            rules('.');
+            break;
+        case(e.code === 'NumpadEnter' || e.code === 'Enter'):
+            calculate();
+            break;
+        case(e.code === 'Backspace'):
+            rules('⌫');
+            break;
+    }
+})
+
+function rules(userInput) {      
     if (firstOperand === '' && userInput === '-') {
         firstOperand += userInput;
         result.textContent += userInput;
@@ -82,7 +115,7 @@ buttons.addEventListener('mousedown', (e) => {
             secondOperand = secondOperand.substring(0, secondOperand.length - 1);
         }
     }
-})
+}
 
 let calculation;
 
@@ -144,41 +177,8 @@ let dvs = buttons.querySelector('#divide');
         }
     })
 
-let keyNumberInput;
-document.addEventListener('keydown', (e) => {
-    keyNumberInput = parseInt(e.code.replace( /^\D+/g, ''));
-    switch(true) {
-        case(!isNaN(keyNumberInput) && !e.code.includes('F')):
-            console.log(keyNumberInput);
-            break;
-        case(e.code === 'NumpadAdd'):
-            console.log('Summation');
-            break;
-        case(e.code === 'NumpadSubtract'):
-            console.log('Subtraction');
-            break;
-        case(e.code === 'NumpadMultiply'):
-            console.log('Multiplication');
-            break;
-        case(e.code === 'NumpadDivide'):
-            console.log('Division');
-            break;
-        case(e.code === 'NumpadDecimal'):
-            console.log('Decimal');
-            break;
-        case(e.code === 'NumpadEnter' || e.code === 'Enter'):
-            console.log('Equals');
-            break;
-        case(e.code === 'Backspace'):
-            console.log('Backspace');
-            break;
-    }
-})
+
 /*
 BUGS:
-- Add keyboard support:
-    + It would be better to separate the current rules function from the buttons event listener.
-    + Creating a new function with the user input as a parameter.
-    + This way that function could be called from the mousedown event listener and also from a
-    keyboard listener.
+- When backspace is pressed in the result it doesn't works properly.
 */
