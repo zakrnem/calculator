@@ -104,6 +104,7 @@ function rules(userInput) {
         result.textContent = newInput;
         
         if(operationSymbol === '') {
+            firstOperand = String(firstOperand)
             firstOperand = firstOperand.substring(0, firstOperand.length - 1);
         }
 
@@ -118,7 +119,6 @@ function rules(userInput) {
 }
 
 let calculation;
-
 function calculate() {
     firstOperand = parseFloat(firstOperand);
     secondOperand = parseFloat(secondOperand);
@@ -180,5 +180,5 @@ let dvs = buttons.querySelector('#divide');
 
 /*
 BUGS:
-- When backspace is pressed in the result it doesn't works properly.
+- Continous operations not working with the keyboard.
 */
