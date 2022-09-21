@@ -155,7 +155,7 @@ let sum = buttons.querySelector('#summation');
             calculate();
         }
     })
-
+    
 let sub = buttons.querySelector('#subtraction');
     sub.addEventListener('mousedown', () => {
         if (firstOperand !== '' && operationSymbol !== '' && secondOperand !== '') {
@@ -177,8 +177,28 @@ let dvs = buttons.querySelector('#divide');
         }
     })
 
+document.addEventListener('keydown', (e) => {
+    if(e.code==='NumpadAdd' && firstOperand !== '' && operationSymbol !== ''
+    && secondOperand !== '') {
+        calculate();
+        rules('+')
+    } 
+    
+    if(e.code==='NumpadSubtract' && firstOperand !== '' && operationSymbol !== ''
+    && secondOperand !== '') {
+        calculate();
+        rules('-')
+    }
 
-/*
-BUGS:
-- Continous operations not working with the keyboard.
-*/
+    if(e.code==='NumpadMultiply' && firstOperand !== '' && operationSymbol !== ''
+    && secondOperand !== '') {
+        calculate();
+        rules('x')
+    }
+
+    if(e.code==='NumpadDivide' && firstOperand !== '' && operationSymbol !== ''
+    && secondOperand !== '') {
+        calculate();
+        rules('÷')
+    }
+})
