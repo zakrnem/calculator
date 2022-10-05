@@ -67,3 +67,14 @@ header {
     margin-right: 4px;
 }
 
+.button:hover {
+    background-color: #a5cadf;
+    position: relative;
+    bottom: 2px;
+}
+
+.button:active {
+    background-color: #6e99b1;
+    position: relative;
+    top: 1px;
+}

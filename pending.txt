@@ -1,0 +1,6 @@
+2. Responsive size:
+    2.1. Adjust size dynamically in function of the display width and height.
+3. Style footer:
+    3.1. Send it to the bottom of the page.
+    3.2. Center it.
+    3.3. Add a separator.
